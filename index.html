@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>XAUUSD PROFITABLE TRADING SYSTEM</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1220;--panel:#131f31;--panel2:#1b2a40;--line:#2b3c55;--muted:#9aabc1;--text:#f3f6fb;--green:#22c58b;--red:#ff647c;--blue:#65a9ff;--amber:#f5b942}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#0b1220,#101b2c);color:var(--text);font:15px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:980px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{font-size:12px;letter-spacing:1.5px;color:var(--muted)}h1{font-size:clamp(23px,4vw,34px);margin:4px 0}.sub{color:var(--muted);font-size:13px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}.step{padding:12px 8px;border:1px solid var(--line);border-radius:12px;background:var(--panel);text-align:center;color:var(--muted);font-weight:700;font-size:12px}.step.active{background:#174b40;border-color:var(--green);color:#fff}.step.done{border-color:#287a65;color:#83e4c1}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:17px;margin:12px 0}.stagehead{display:flex;justify-content:space-between;align-items:center;gap:10px}.stagehead h2{margin:0;font-size:22px}.pill{font-size:11px;font-weight:800;padding:6px 10px;border-radius:20px;background:#26364d;color:#cfe0f8}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field label{display:block;color:var(--muted);font-size:12px;margin:0 0 7px}.field input{width:100%;padding:13px;border-radius:10px;border:1px solid var(--line);background:#0d1726;color:#fff;font-size:17px;outline:none}.field input:focus{border-color:var(--blue)}
+.segment{display:flex;gap:8px}.segment button{flex:1;padding:12px;border:1px solid var(--line);background:#0d1726;color:var(--muted);border-radius:10px;font-weight:800}.segment button.selected.buy{background:#164d3d;color:#a5f5d6;border-color:var(--green)}.segment button.selected.sell{background:#582638;color:#ffc0cb;border-color:var(--red)}
+h3{font-size:16px;margin:0 0 13px}.muted{color:var(--muted)}.metric{background:#0d1726;border:1px solid var(--line);border-radius:12px;padding:13px;min-width:0}.metric .kind{font-size:11px;font-weight:800;letter-spacing:.7px}.metric .price{font-size:clamp(19px,3vw,25px);font-weight:800;margin:5px 0;overflow-wrap:anywhere}.metric .money{font-size:18px;font-weight:800}.loss{color:var(--red)}.profit{color:var(--green)}.row{display:flex;justify-content:space-between;gap:10px;align-items:center;margin:9px 0}.row strong{font-variant-numeric:tabular-nums}.note{font-size:12px;line-height:1.5;color:var(--muted)}.preview{background:#0d1726;border:1px solid var(--line);border-radius:12px;padding:14px}.preview strong{display:block;font-size:18px;margin-top:4px}.btn{border:0;border-radius:11px;padding:14px 16px;font-weight:850;cursor:pointer;font-size:14px}.btn:disabled{opacity:.42;cursor:not-allowed}.primary{background:var(--green);color:#06251c;width:100%;margin-top:12px}.secondary{background:#26364d;color:#e8f0fb}.dangerbtn{background:#4b2633;color:#ffd5dc}.history{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}.hidden{display:none!important}.footer{font-size:11px;color:var(--muted);text-align:center;padding:18px}
+.hidden{display:none!important}.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:18px}.auth-card{width:min(100%,440px);background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 18px 55px #0005}.auth-card h1{font-size:24px}.auth-card label{display:block;color:var(--muted);font-size:12px;margin:14px 0 6px}.auth-card input,.admin-grid input{width:100%;padding:13px;border-radius:10px;border:1px solid var(--line);background:#0d1726;color:#fff;font-size:16px}.auth-actions{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}.auth-actions .btn{flex:1}.auth-message{font-size:13px;color:var(--amber);line-height:1.5;margin:12px 0}.link-btn{background:none;border:0;color:var(--blue);padding:12px 0;cursor:pointer}.account-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;color:var(--muted);font-size:13px}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.dangerbtn{background:#4b2633;color:#ffd5dc}
+@media(max-width:560px){.admin-grid{grid-template-columns:1fr}.account-bar{align-items:flex-start}}
+@media(max-width:560px){.wrap{padding:12px}.panel{padding:14px}.grid{gap:8px}.metric{padding:10px}.steps{gap:5px}.step{font-size:10px;padding:10px 4px}}
+</style>
+</head>
+<body>
+<section id="authScreen" class="auth-wrap">
+  <div class="auth-card">
+    <h1>XAUUSD PROFITABLE TRADING SYSTEM</h1>
+    <p class="sub">Secure account login</p>
+    <div id="authMessage" class="auth-message" role="status">Login with your approved account.</div>
+    <label for="authEmail">Email</label><input id="authEmail" type="email" autocomplete="username" placeholder="Enter email">
+    <label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" placeholder="Enter password">
+    <div class="auth-actions"><button id="loginBtn" class="btn primary">LOGIN</button><button id="signupBtn" class="btn secondary">CREATE ACCOUNT</button></div>
+    <button id="forgotBtn" class="link-btn">Forgot password?</button>
+  </div>
+</section>
+<section id="waitingScreen" class="auth-wrap hidden"><div class="auth-card"><h2>Access not approved</h2><p id="waitingMessage">Your account is waiting for admin approval.</p><button id="waitingLogout" class="btn secondary">LOG OUT</button></div></section>
+<div id="appShell" class="hidden">
+<main class="wrap">
+<div class="account-bar"><span id="signedInAs"></span><button id="logoutBtn" class="btn secondary">LOG OUT</button></div>
+<section id="adminPanel" class="panel hidden">
+  <h3>Admin · User access</h3>
+  <p class="note">Create or update a user access record. First create the user's Email/Password account in Firebase Authentication, then enter the exact UID and email here.</p>
+  <div class="admin-grid">
+    <div class="field"><label for="newUserUid">FIREBASE AUTH UID</label><input id="newUserUid" type="text" placeholder="Paste user's UID"></div>
+    <div class="field"><label for="newUserEmail">USER EMAIL</label><input id="newUserEmail" type="email" placeholder="user@example.com"></div>
+  </div>
+  <div class="auth-actions"><button id="approveUserBtn" class="btn primary">APPROVE / SAVE USER</button><button id="blockUserBtn" class="btn dangerbtn">BLOCK USER</button></div>
+  <div id="adminMessage" class="note" aria-live="polite"></div>
+</section>
+<header class="top"><div><h1>XAUUSD PROFITABLE TRADING SYSTEM</h1></div></header>
+<nav class="steps"><div class="step active" id="s-p1">01 · PHASE 1</div><div class="step" id="s-p2">02 · PHASE 2</div><div class="step" id="s-m">03 · MASTER</div></nav>
+<section class="panel">
+<div class="stagehead"><h2 id="stageTitle">Phase 1</h2><span class="pill" id="tradeTag">TRADE 1</span></div>
+<p class="note" id="stageDesc">First evaluation trade</p>
+<div class="grid">
+ <div class="field"><label for="entry">XAUUSD ENTRY PRICE (EDITABLE)</label><input id="entry" type="number" step="0.01" placeholder="Enter XAUUSD entry price"></div>
+ <div class="field"><label>FUNDED ACCOUNT DIRECTION</label><div class="segment"><button id="buy" class="buy">BUY</button><button id="sell" class="sell">SELL</button></div></div>
+</div>
+</section>
+<section class="panel">
+<h3>1. Funded account · <span id="fundLot">1.00</span> lot</h3>
+<div class="grid">
+ <div class="metric"><div class="kind loss">STOP LOSS</div><div class="price" id="fsl"></div><div class="money loss" id="fslMoney"></div></div>
+ <div class="metric"><div class="kind profit">TAKE PROFIT</div><div class="price" id="ftp"></div><div class="money profit" id="ftpMoney"></div></div>
+</div>
+</section>
+<section class="panel">
+<h3>2. Real account · opposite direction</h3>
+<div class="row"><span class="muted">Real account direction</span><strong id="realSide">SELL</strong></div>
+<div class="row"><span class="muted">Lot size</span><strong id="realLot">0.17 LOT</strong></div>
+<div class="grid">
+ <div class="metric"><div class="kind loss">REAL STOP LOSS</div><div class="price" id="rsl"></div><div class="money loss" id="rslMoney"></div><div class="note"></div></div>
+ <div class="metric"><div class="kind profit">REAL TAKE PROFIT</div><div class="price" id="rtp"></div><div class="money profit" id="rtpMoney"></div><div class="note"></div></div>
+</div>
+
+</section>
+<section class="panel">
+<h3>3. Record funded trade result</h3>
+<div class="segment"><button id="win" class="selected buy">✓ WIN</button><button id="loss" class="sell">✕ LOSS</button></div>
+<div class="preview" style="margin-top:13px"><span class="note">NEXT STEP PREVIEW</span><strong id="nextPreview">Phase 2 – Trade 1</strong></div>
+<button class="btn primary" id="confirm">CONFIRM RESULT & NEXT STEP →</button>
+</section>
+<section class="panel">
+<div class="stagehead"><h3 style="margin:0">Trade history</h3><button class="btn secondary" id="reset">Reset</button></div>
+<div id="history"><p class="note">No results recorded yet.</p></div>
+</section>
+<p class="footer">Planning calculator only. Verify broker contract size, spread, commission, slippage and actual risk before trading. No trades are placed automatically.</p>
+</main>
+</div>
+<script>
+const C={
+p1:{name:'Phase 1',t:[null,{lot:1,rl:0.17,sl:10,tp:20.5,sm:1000,tm:2050,rsm:348.5,rtm:170},{lot:1,rl:0.17,sl:10,tp:31,sm:1000,tm:3100,rsm:527,rtm:170}]},
+p2:{name:'Phase 2',t:[null,{lot:1,rl:0.34,sl:10,tp:13,sm:1000,tm:1300,rsm:442,rtm:340},{lot:1,rl:0.34,sl:10,tp:23,sm:1080,tm:2300,rsm:782,rtm:340}]},
+m:{name:'Master Account',t:[null,{lot:.4,rl:.2,sl:27.5,tp:50,sm:1100,tm:2000,rsm:1000,rtm:550},{lot:.4,rl:.2,sl:27.5,tp:77.5,sm:1100,tm:3100,rsm:1550,rtm:550}]}
+};
+let stage='p1',trade=1,side=null,result='WIN',history=[];
+const $=id=>document.getElementById(id), money=n=>'$'+Math.abs(n).toLocaleString('en-US',{maximumFractionDigits:2}), price=n=>Number.isFinite(n)?n.toFixed(2):'—';
+function nextState(){
+ let ns=stage,nt=trade;
+ if(stage==='p1'){if(result==='WIN'){ns='p2';nt=1}else if(trade===1)nt=2;else{nt=1}}
+ else if(stage==='p2'){if(result==='WIN'){ns='m';nt=1}else if(trade===1)nt=2;else{ns='p1';nt=1}}
+ else if(trade===1){if(result==='LOSS')nt=2;else nt=1}
+ else if(result==='WIN')nt=1;else{ns='p1';nt=1}
+ return [ns,nt];
+}
+function preview(){let [s,t]=nextState();return C[s].name+' – Trade '+t+(s==='p1'&&stage!=='p1'?' (Restart)':s==='p1'&&trade===2&&result==='LOSS'?' (Restart)':'')}
+function render(){
+ const c=C[stage].t[trade],raw=$('entry').value.trim(),e=raw===''?NaN:parseFloat(raw),valid=Number.isFinite(e)&&e>0,ready=valid&&side!==null,sgn=side==='BUY'?1:-1,sl=ready?e-sgn*c.sl:NaN,tp=ready?e+sgn*c.tp:NaN;
+ $('stageTitle').textContent=C[stage].name;$('tradeTag').textContent='TRADE '+trade;
+ $('stageDesc').textContent=stage==='m'?'Master account stage':stage==='p1'?'First evaluation stage':'Second evaluation stage';
+ ['p1','p2','m'].forEach((s,i)=>{$('s-'+s).className='step'+(s===stage?' active':(['p1','p2','m'].indexOf(stage)>i?' done':''))});
+ $('buy').className=side==='BUY'?'selected buy':'buy';$('sell').className=side==='SELL'?'selected sell':'sell';
+ $('fundLot').textContent=c.lot.toFixed(2);$('fsl').textContent=ready?price(sl):'';$('ftp').textContent=ready?price(tp):'';
+ $('fslMoney').textContent=ready?'LOSS  -'+money(c.sm):'';$('ftpMoney').textContent=ready?'PROFIT  +'+money(c.tm):'';
+
+ $('realSide').textContent=side===null?'—':(side==='BUY'?'SELL':'BUY');$('realLot').textContent=c.rl.toFixed(2)+' LOT';
+ $('rsl').textContent=ready?price(tp):'';$('rtp').textContent=ready?price(sl):'';
+ $('rslMoney').textContent=ready?'LOSS  -'+money(c.rsm):'';$('rtpMoney').textContent=ready?'PROFIT  +'+money(c.rtm):'';
+ $('nextPreview').textContent=preview();$('confirm').disabled=!ready;
+ $('win').className=result==='WIN'?'selected buy':'buy';$('loss').className=result==='LOSS'?'selected sell':'sell';
+}
+function record(){if(!Number.isFinite(parseFloat($('entry').value))||parseFloat($('entry').value)<=0){$('entry').focus();return}history.unshift({stage:C[stage].name,trade,result,entry:$('entry').value,side});let [s,t]=nextState();stage=s;trade=t;result='WIN';side=null;$('entry').value='';render();renderHistory()}
+function renderHistory(){$('history').innerHTML=history.length?history.map((h,i)=>`<div class="history"><span>${history.length-i}. ${h.stage} · Trade ${h.trade}</span><b style="color:${h.result==='WIN'?'var(--green)':'var(--red)'}">${h.result}</b></div>`).join(''):'<p class="note">No results recorded yet.</p>'}
+$('entry').addEventListener('input',render);$('buy').onclick=()=>{side='BUY';render()};$('sell').onclick=()=>{side='SELL';render()};
+$('win').onclick=()=>{result='WIN';render()};$('loss').onclick=()=>{result='LOSS';render()};$('confirm').onclick=record;
+$('reset').onclick=()=>{if(confirm('Reset all progress and trade history?')){stage='p1';trade=1;side=null;result='WIN';history=[];$('entry').value='';render();renderHistory()}};
+render();
+</script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+
+// Firebase authentication, approval gate, device binding and per-user cloud history.
+// Firebase web config is public client configuration; access is enforced by Firestore Rules.
+const firebaseConfig = {
+  apiKey: "AIzaSyC3I2eVL4CJGLRbFaSB1bgQ-IdzsQnHxBA",
+  authDomain: "xauusd-profitable-trading.firebaseapp.com",
+  projectId: "xauusd-profitable-trading",
+  storageBucket: "xauusd-profitable-trading.firebasestorage.app",
+  messagingSenderId: "629002921125",
+  appId: "1:629002921125:web:05ae0ce4dd26960a79194c",
+  measurementId: "G-P3ZFX7BCKP"
+};
+const ADMIN_EMAIL = 'shubhambhosale1887@gmail.com';
+let fbAuth, fbDb, currentUser=null, isAdminUser=false, cloudReady=false;
+const authMsg = (m, bad=false) => { const el=document.getElementById('authMessage'); if(el){el.textContent=m;el.style.color=bad?'var(--red)':'var(--amber)';} };
+const adminMsg = m => { const el=document.getElementById('adminMessage'); if(el)el.textContent=m; };
+function deviceToken(){let v=localStorage.getItem('xauusd_device_token');if(!v){v=(crypto.randomUUID?crypto.randomUUID():('dev-'+Date.now()+'-'+Math.random().toString(36).slice(2)));localStorage.setItem('xauusd_device_token',v);}return v;}
+function showOnly(id){['authScreen','waitingScreen','appShell'].forEach(x=>document.getElementById(x).classList.toggle('hidden',x!==id));}
+function setBusy(b){['loginBtn','signupBtn','forgotBtn'].forEach(id=>{const e=document.getElementById(id);if(e)e.disabled=b;});}
+async function enterApp(user){
+  currentUser=user;
+  await user.reload();
+  const email=(user.email||'').toLowerCase();
+  if(email===ADMIN_EMAIL && !user.emailVerified){
+    try{await user.sendEmailVerification();}catch(e){console.warn('Verification email could not be sent automatically',e);}
+    showOnly('waitingScreen');document.getElementById('waitingMessage').textContent='Admin email verification is required. Check your inbox (and spam), verify the email, then log in again.';return;
+  }
+  isAdminUser=email===ADMIN_EMAIL && user.emailVerified;
+  let userRef=fbDb.collection('users').doc(user.uid), userSnap=await userRef.get();
+  if(isAdminUser){
+    if(!userSnap.exists){await userRef.set({email:user.email,role:'admin',approved:true,blocked:false,deviceId:null,createdAt:firebase.firestore.FieldValue.serverTimestamp()});}
+  } else {
+    if(!user.emailVerified){showOnly('waitingScreen');document.getElementById('waitingMessage').textContent='Please verify your email, then log in again.';return;}
+    if(!userSnap.exists){showOnly('waitingScreen');document.getElementById('waitingMessage').textContent='Your account is created. Ask the admin to approve your UID: '+user.uid;return;}
+    const data=userSnap.data();
+    if(data.blocked===true){showOnly('waitingScreen');document.getElementById('waitingMessage').textContent='Your access is blocked. Please contact the admin.';return;}
+    if(data.approved!==true){showOnly('waitingScreen');document.getElementById('waitingMessage').textContent='Your account is waiting for admin approval.';return;}
+    const token=deviceToken();
+    if(data.deviceId && data.deviceId!==token){showOnly('waitingScreen');document.getElementById('waitingMessage').textContent='This account is already linked to another browser/device. Contact admin to reset device access.';return;}
+    if(!data.deviceId){await userRef.update({deviceId:token});}
+  }
+  document.getElementById('signedInAs').textContent='Signed in: '+(user.email||'');
+  document.getElementById('adminPanel').classList.toggle('hidden',!isAdminUser);
+  showOnly('appShell');
+  await loadCloudState();
+}
+async function saveCloudState(){
+  if(!currentUser||!cloudReady)return;
+  const payload={stage,trade,side,result,entry:$('entry').value,history,updatedAt:firebase.firestore.FieldValue.serverTimestamp()};
+  try{await fbDb.collection('users').doc(currentUser.uid).collection('private').doc('tradingState').set(payload);}catch(e){console.error('Cloud save failed',e);}
+}
+async function loadCloudState(){
+  cloudReady=false;
+  try{
+    const snap=await fbDb.collection('users').doc(currentUser.uid).collection('private').doc('tradingState').get();
+    if(snap.exists){const d=snap.data();if(C[d.stage] && [1,2].includes(Number(d.trade))){stage=d.stage;trade=Number(d.trade);}side=['BUY','SELL'].includes(d.side)?d.side:null;result=d.result==='LOSS'?'LOSS':'WIN';$('entry').value=typeof d.entry==='string'?d.entry:'';history=Array.isArray(d.history)?d.history:[];render();renderHistory();}
+  }catch(e){console.error('Cloud load failed',e);authMsg('Could not load your cloud trading data: '+e.message,true);}
+  cloudReady=true;
+}
+async function login(){const email=$('authEmail').value.trim(),password=$('authPassword').value;if(!email||!password){authMsg('Enter email and password.',true);return;}setBusy(true);try{const cred=await fbAuth.signInWithEmailAndPassword(email,password);await enterApp(cred.user);}catch(e){authMsg(e.message,true);}finally{setBusy(false);}}
+async function signup(){const email=$('authEmail').value.trim(),password=$('authPassword').value;if(!email||password.length<6){authMsg('Enter email and a password with at least 6 characters.',true);return;}setBusy(true);try{const cred=await fbAuth.createUserWithEmailAndPassword(email,password);await cred.user.sendEmailVerification();await fbAuth.signOut();authMsg('Account created. Verify your email, then ask admin to approve your UID.');}catch(e){authMsg(e.message,true);}finally{setBusy(false);}}
+async function resetPassword(){const email=$('authEmail').value.trim();if(!email){authMsg('Enter your email first.',true);return;}try{await fbAuth.sendPasswordResetEmail(email);authMsg('Password reset email sent.');}catch(e){authMsg(e.message,true);}}
+async function adminSaveUser(blocked){if(!isAdminUser){adminMsg('Admin access required.');return;}const uid=$('newUserUid').value.trim(),email=$('newUserEmail').value.trim();if(!uid||!email){adminMsg('Enter both UID and email.');return;}try{await fbDb.collection('users').doc(uid).set({email,role:'user',approved:!blocked,blocked:!!blocked,deviceId:null,updatedAt:firebase.firestore.FieldValue.serverTimestamp()},{merge:true});adminMsg(blocked?'User blocked.':'User approved.');}catch(e){adminMsg('Error: '+e.message);}}
+$('loginBtn').addEventListener('click',login);$('signupBtn').addEventListener('click',signup);$('forgotBtn').addEventListener('click',resetPassword);
+$('waitingLogout').addEventListener('click',()=>fbAuth.signOut());$('logoutBtn').addEventListener('click',()=>fbAuth.signOut());
+$('approveUserBtn').addEventListener('click',()=>adminSaveUser(false));$('blockUserBtn').addEventListener('click',()=>adminSaveUser(true));
+// Persist important changes for the signed-in account.
+const oldRecord=record;record=function(){oldRecord();saveCloudState();};
+const oldRenderHistory=renderHistory;renderHistory=function(){oldRenderHistory();};
+$('entry').addEventListener('change',saveCloudState);
+$('buy').addEventListener('click',saveCloudState);$('sell').addEventListener('click',saveCloudState);$('win').addEventListener('click',saveCloudState);$('loss').addEventListener('click',saveCloudState);
+const oldResetHandler=$('reset').onclick;$('reset').onclick=()=>{oldResetHandler();saveCloudState();};
+(async function initFirebase(){
+ try{
+   if(!window.firebase){authMsg('Firebase SDK failed to load. Check your internet connection.',true);return;}
+   firebase.initializeApp(firebaseConfig);fbAuth=firebase.auth();fbDb=firebase.firestore();
+   fbAuth.onAuthStateChanged(async user=>{if(user){try{await enterApp(user);}catch(e){console.error(e);showOnly('waitingScreen');document.getElementById('waitingMessage').textContent='Access check failed: '+e.message;}}else{currentUser=null;isAdminUser=false;cloudReady=false;showOnly('authScreen');}});
+ }catch(e){authMsg('Firebase setup error: '+e.message,true);}
+})();
+
+</script></body></html>
